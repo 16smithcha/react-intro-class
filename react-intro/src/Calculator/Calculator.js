@@ -15,11 +15,13 @@ class Calculator extends Component {
 
   updateHeader(val) {
     this.setState({ header: val });
+    console.log('header state: ' + this.state.header);
   }
 
   setDisplay(num) {
     var display = ( this.state.display === '0' ) ? num : this.state.display + num;
     this.setState({ display: (this.state.display.length < 13) ? display : this.state.display })
+    console.log('display state: ' + this.state.display);
   }
 
   setOperator(operator) {
@@ -50,10 +52,12 @@ class Calculator extends Component {
   }
 
   this.setState({ display: String(result) });
+  console.log('result: ' + this.state.result);
 }
 
 clearDisplay() {
   this.setState({ display: '0', temp: 0, operator: '', resetDisplay: false });
+  console.log('cleared state: ' + this.state.display);
 }
 
   render() {
@@ -68,25 +72,26 @@ clearDisplay() {
             <span className="total"> { this.state.display} </span>
           </div>
 
-          <div className="btn clear"></div>
+          <div className="btn clear"onClick={ () => {this.clearDisplay(); console.log('clicked clear'); } }></div>
 
-          <div className="btn zero"  onClick={ () => {this.setDisplay('0'); } }></div>
-          <div className="btn one"  onClick={ () => {this.setDisplay('1'); } }></div>
-          <div className="btn two"  onClick={ () => {this.setDisplay('2'); } }></div>
-          <div className="btn three"  onClick={ () => {this.setDisplay('3'); } }></div>
-          <div className="btn four"  onClick={ () => {this.setDisplay('4'); } }></div>
-          <div className="btn five"  onClick={ () => {this.setDisplay('5'); } }></div>
-          <div className="btn six"  onClick={ () => {this.setDisplay('6'); } }></div>
-          <div className="btn seven"  onClick={ () => {this.setDisplay('7'); } }></div>
-          <div className="btn eight"  onClick={ () => {this.setDisplay('8'); } }></div>
-          <div className="btn nine"  onClick={ () => {this.setDisplay('9'); } }></div>
+          <div className="btn zero"  onClick={ () => {this.setDisplay('0'); console.log('clicked 0'); } }></div>
+          <div className="btn one"  onClick={ () => {this.setDisplay('1'); console.log('clicked 1'); } }></div>
+          <div className="btn two"  onClick={ () => {this.setDisplay('2'); console.log('clicked 2'); } }></div>
+          <div className="btn three"  onClick={ () => {this.setDisplay('3'); console.log('clicked 3'); } }></div>
+          <div className="btn four"  onClick={ () => {this.setDisplay('4'); console.log('clicked 4'); } }></div>
+          <div className="btn five"  onClick={ () => {this.setDisplay('5'); console.log('clicked 5'); } }></div>
+          <div className="btn six"  onClick={ () => {this.setDisplay('6'); console.log('clicked 6'); } }></div>
+          <div className="btn seven"  onClick={ () => {this.setDisplay('7'); console.log('clicked 7'); } }></div>
+          <div className="btn eight"  onClick={ () => {this.setDisplay('8'); console.log('clicked 8'); } }></div>
+          <div className="btn nine"  onClick={ () => {this.setDisplay('9'); console.log('clicked 9'); } }></div>
 
-          <div className="btn equal" onClick={ () => { this.setOperator('='); } }></div>
-          <div className="btn multiply" onClick={ () => { this.setOperator('*'); } }></div>
-          <div className="btn divide" onClick={ () => { this.setOperator('/'); } }></div>
-          <div className="btn subtract" onClick={ () => { this.setOperator('-'); } }></div>
-          <div className="btn add" onClick={ () => { this.setOperator('+'); } }></div>
+          <div className="btn equal" onClick={ () => { this.setOperator('='); this.calculate(); console.log('clicked ='); } }></div>
+          <div className="btn multiply" onClick={ () => { this.setOperator('*'); console.log('clicked *'); } }></div>
+          <div className="btn divide" onClick={ () => { this.setOperator('/'); console.log('clicked /'); } }></div>
+          <div className="btn subtract" onClick={ () => { this.setOperator('-'); console.log('clicked -'); } }></div>
+          <div className="btn add" onClick={ () => { this.setOperator('+'); console.log('clicked +'); } }></div>
         </div>
+        <p>{this.state.display}</p>
       </div>
     )
   }
